@@ -6,7 +6,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.CycleInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -42,18 +44,22 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
                 // *. 记得在 Practice08ObjectAnimatorView 中为 progress 添加 setter/ getter 方法！
 //                Animator a = ObjectAnimator.ofFloat(view, "progress", 0, 65);
                 if (on) {
-                    ObjectAnimator a = ObjectAnimator.ofInt(view, "progress", Color.LTGRAY, Color.RED);
-                    a.setInterpolator(new LinearInterpolator());
+//                    ObjectAnimator a = ObjectAnimator.ofInt(view, "progress", Color.LTGRAY, Color.RED);
+                    ObjectAnimator a = ObjectAnimator.ofFloat(view, "progress", 1f, 1.2f, 1f);
+                    a.setInterpolator(new OvershootInterpolator());
 //                    a.setEvaluator(new ArgbEvaluator());
-                    a.setEvaluator(new HsvEvaluator());
-                    a.setDuration(100);
+//                    a.setEvaluator(new HsvEvaluator());
+                    a.setDuration(500);
                     a.start();
+                    view.isClick = true;
                 } else {
-                    ObjectAnimator a = ObjectAnimator.ofInt(view, "progress", Color.RED, Color.LTGRAY);
-                    a.setInterpolator(new LinearInterpolator());
-                    a.setEvaluator(new HsvEvaluator());
-                    a.setDuration(100);
+                    ObjectAnimator a = ObjectAnimator.ofFloat(view, "progress", 1f, 0.8f, 1f);
+                    a.setInterpolator(new OvershootInterpolator());
+//                    a.setInterpolator(new LinearInterpolator());
+//                    a.setEvaluator(new HsvEvaluator());
+                    a.setDuration(500);
                     a.start();
+                    view.isClick = false;
                 }
                 on = !on;
             }

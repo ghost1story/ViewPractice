@@ -19,13 +19,14 @@ public class Practice08ObjectAnimatorView extends View {
     Paint paint = new Paint();
 
     // TODO 为 progress 添加 getter 和 setter 方法（setter 方法记得加 invalidate()）
-    int progress = Color.LTGRAY;
+//    int progress = Color.LTGRAY;
+    float progress = Color.LTGRAY;
 
     public float getProgress() {
         return progress;
     }
 
-    public void setProgress(int progress) {
+    public void setProgress(float progress) {
         this.progress = progress;
         invalidate();
     }
@@ -67,8 +68,12 @@ public class Practice08ObjectAnimatorView extends View {
 
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
-//        paint.setColor(Color.LTGRAY);
-        paint.setColor(progress);
+        if (isClick) {
+            paint.setColor(Color.RED);
+        } else {
+            paint.setColor(Color.LTGRAY);
+        }
+//        paint.setColor(progress);
 
         Path p = new Path();
         p.addRect(100, 150, 150, 300, Path.Direction.CW);
@@ -76,10 +81,15 @@ public class Practice08ObjectAnimatorView extends View {
         p.addRect(250, 100, 300, 150, Path.Direction.CW);
 //        p.moveTo(150, 150);
 //        p.rLineTo(0, 150);
+
+        canvas.scale(progress, progress, 225, 225);
+
         canvas.drawPath(p, paint);
 
 //        canvas.drawRect(100, 150, 150, 300, paint);
 //        canvas.drawRect(150, 150, 350, 300, paint);
 //        canvas.drawRect(250, 100, 300, 150, paint);
     }
+
+    public boolean isClick = false;
 }
