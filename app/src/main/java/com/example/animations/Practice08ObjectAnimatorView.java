@@ -66,21 +66,25 @@ public class Practice08ObjectAnimatorView extends View {
 //        paint.setStyle(Paint.Style.FILL);
 //        canvas.drawText((int) progress + "%", centerX, centerY - (paint.ascent() + paint.descent()) / 2, paint);
 
+        Path p = new Path();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         if (isClick) {
             paint.setColor(Color.RED);
+            p.moveTo(230, 80);
+            p.rLineTo(-50, -50);
+            p.moveTo(275, 70);
+            p.rLineTo(0, -70);
+            p.moveTo(330, 80);
+            p.rLineTo(50, -50);
         } else {
             paint.setColor(Color.LTGRAY);
         }
 //        paint.setColor(progress);
 
-        Path p = new Path();
         p.addRect(100, 150, 150, 300, Path.Direction.CW);
         p.addRect(151, 150, 350, 300, Path.Direction.CW);
         p.addRect(250, 100, 300, 150, Path.Direction.CW);
-//        p.moveTo(150, 150);
-//        p.rLineTo(0, 150);
 
         canvas.scale(progress, progress, 225, 225);
 
