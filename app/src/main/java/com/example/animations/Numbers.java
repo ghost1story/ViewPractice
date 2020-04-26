@@ -24,8 +24,28 @@ public class Numbers extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    private int moveUpY;
+
+    public int getMoveUpY() {
+        return moveUpY;
+    }
+
+    public void setMoveUpY(int moveUpY) {
+        this.moveUpY = moveUpY;
+        invalidate();
+    }
+
+    private Paint paint = new Paint();
+
+    private static final int NUMBER_WIDTH = 50;
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        paint.setTextSize(80);
+        canvas.drawText("1", 100, 100, paint);
+        canvas.drawText("0", 100 + NUMBER_WIDTH, 100 - moveUpY, paint);
+        canvas.drawText("1", 100 + NUMBER_WIDTH, 100 + 100 - moveUpY, paint);
     }
 }

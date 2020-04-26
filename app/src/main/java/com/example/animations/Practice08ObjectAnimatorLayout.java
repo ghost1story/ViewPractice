@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 public class Practice08ObjectAnimatorLayout extends RelativeLayout {
     Practice08ObjectAnimatorView view;
     Button animateBt;
+    Numbers n;
 
     public Practice08ObjectAnimatorLayout(Context context) {
         super(context);
@@ -33,12 +34,12 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
         super.onAttachedToWindow();
 
         view = (Practice08ObjectAnimatorView) findViewById(R.id.objectAnimatorView);
+        n = findViewById(R.id.numbers);
         animateBt = (Button) findViewById(R.id.animateBt);
 
         animateBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO 在这里处理点击事件，用 ObjectAnimator 播放动画
                 // 1. 用 ObjectAnimator 创建 Animator 对象
                 // 2. 用 start() 执行动画
                 // *. 记得在 Practice08ObjectAnimatorView 中为 progress 添加 setter/ getter 方法！
@@ -51,6 +52,11 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
 //                    a.setEvaluator(new HsvEvaluator());
                     a.setDuration(500);
                     a.start();
+
+                    ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", 0, 100);
+                    numberAnimator.setDuration(1000);
+                    numberAnimator.start();
+
                     view.isClick = true;
                 } else {
                     ObjectAnimator a = ObjectAnimator.ofFloat(view, "progress", 1f, 0.8f, 1f);
@@ -59,6 +65,11 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
 //                    a.setEvaluator(new HsvEvaluator());
                     a.setDuration(500);
                     a.start();
+
+                    ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", 100, 0);
+                    numberAnimator.setDuration(1000);
+                    numberAnimator.start();
+
                     view.isClick = false;
                 }
                 on = !on;
