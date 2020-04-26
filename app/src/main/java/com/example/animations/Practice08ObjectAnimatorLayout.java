@@ -53,8 +53,9 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
                     a.setDuration(500);
                     a.start();
 
-                    ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", 0, 100);
+                    ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", 0, n.numHeight);
                     numberAnimator.setDuration(1000);
+                    n.setPaintColor(Color.RED);
                     numberAnimator.start();
 
                     view.isClick = true;
@@ -66,9 +67,10 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
                     a.setDuration(500);
                     a.start();
 
-                    ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", 100, 0);
+                    ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", n.numHeight, 0);
                     numberAnimator.setDuration(1000);
                     numberAnimator.start();
+                    n.setPaintColor(Color.BLACK);
 
                     view.isClick = false;
                 }
