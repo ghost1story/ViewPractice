@@ -43,10 +43,7 @@ public class Practice08ObjectAnimatorView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    {
-//        paint.setTextSize(dpToPixel(40));
-//        paint.setTextAlign(Paint.Align.CENTER);
-    }
+    Path p = new Path();
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -66,7 +63,6 @@ public class Practice08ObjectAnimatorView extends View {
 //        paint.setStyle(Paint.Style.FILL);
 //        canvas.drawText((int) progress + "%", centerX, centerY - (paint.ascent() + paint.descent()) / 2, paint);
 
-        Path p = new Path();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         if (isClick) {

@@ -33,9 +33,9 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        view = (Practice08ObjectAnimatorView) findViewById(R.id.objectAnimatorView);
+        view = findViewById(R.id.objectAnimatorView);
         n = findViewById(R.id.numbers);
-        animateBt = (Button) findViewById(R.id.animateBt);
+        animateBt = findViewById(R.id.animateBt);
 
         animateBt.setOnClickListener(new OnClickListener() {
             @Override
@@ -54,8 +54,8 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
                     a.start();
 
                     ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", 0, n.numHeight);
-                    numberAnimator.setDuration(1000);
-                    n.setPaintColor(Color.RED);
+                    numberAnimator.setDuration(500);
+                    n.calculateNum(1);
                     numberAnimator.start();
 
                     view.isClick = true;
@@ -68,9 +68,9 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
                     a.start();
 
                     ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", n.numHeight, 0);
-                    numberAnimator.setDuration(1000);
+                    numberAnimator.setDuration(500);
+                    n.calculateNum(-1);
                     numberAnimator.start();
-                    n.setPaintColor(Color.BLACK);
 
                     view.isClick = false;
                 }
