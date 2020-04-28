@@ -1,6 +1,8 @@
 package com.example.animations;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -45,6 +47,10 @@ public class Practice08ObjectAnimatorView extends View {
 
     Path p = new Path();
 
+    private Bitmap thumbUp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_messages_like_selected);
+    private Bitmap thumbDown = BitmapFactory.decodeResource(getResources(), R.drawable.ic_messages_like_unselected);
+    private Bitmap shining = BitmapFactory.decodeResource(getResources(), R.drawable.ic_messages_like_selected_shining);
+
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -63,28 +69,33 @@ public class Practice08ObjectAnimatorView extends View {
 //        paint.setStyle(Paint.Style.FILL);
 //        canvas.drawText((int) progress + "%", centerX, centerY - (paint.ascent() + paint.descent()) / 2, paint);
 
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
+//        paint.setStyle(Paint.Style.STROKE);
+//        paint.setStrokeWidth(10);
         if (isClick) {
-            paint.setColor(Color.RED);
-            p.moveTo(230, 80);
-            p.rLineTo(-50, -50);
-            p.moveTo(275, 70);
-            p.rLineTo(0, -70);
-            p.moveTo(330, 80);
-            p.rLineTo(50, -50);
+//            paint.setColor(Color.RED);
+//            p.moveTo(230, 80);
+//            p.rLineTo(-50, -50);
+//            p.moveTo(275, 70);
+//            p.rLineTo(0, -70);
+//            p.moveTo(330, 80);
+//            p.rLineTo(50, -50);
+
+            canvas.drawBitmap(thumbUp, 100, 300, paint);
+            canvas.drawBitmap(shining, 104, 270, paint);
         } else {
-            paint.setColor(Color.LTGRAY);
+//            paint.setColor(Color.LTGRAY);
+
+            canvas.drawBitmap(thumbDown, 100, 300, paint);
         }
 //        paint.setColor(progress);
 
-        p.addRect(100, 150, 150, 300, Path.Direction.CW);
-        p.addRect(151, 150, 350, 300, Path.Direction.CW);
-        p.addRect(250, 100, 300, 150, Path.Direction.CW);
+//        p.addRect(100, 150, 150, 300, Path.Direction.CW);
+//        p.addRect(151, 150, 350, 300, Path.Direction.CW);
+//        p.addRect(250, 100, 300, 150, Path.Direction.CW);
 
         canvas.scale(progress, progress, 225, 225);
 
-        canvas.drawPath(p, paint);
+//        canvas.drawPath(p, paint);
 
 //        canvas.drawRect(100, 150, 150, 300, paint);
 //        canvas.drawRect(150, 150, 350, 300, paint);

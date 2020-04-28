@@ -89,7 +89,7 @@ public class Numbers extends View {
                     numStash[1] = changed.substring(i);
                     numStash[2] = unchanged.substring(i);
                 }
-
+                break;
             }
         }
         mCount += count;
