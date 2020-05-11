@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -28,8 +29,11 @@ public class Practice08ObjectAnimatorView extends View {
         return progress;
     }
 
+    private Matrix matrix = new Matrix();
+
     public void setProgress(float progress) {
         this.progress = progress;
+//        matrix.postScale(progress, progress);
         invalidate();
     }
 
@@ -71,6 +75,8 @@ public class Practice08ObjectAnimatorView extends View {
 
 //        paint.setStyle(Paint.Style.STROKE);
 //        paint.setStrokeWidth(10);
+//        canvas.concat(matrix);
+        canvas.scale(progress, progress, 225, 225);
         if (isClick) {
 //            paint.setColor(Color.RED);
 //            p.moveTo(230, 80);
@@ -93,7 +99,7 @@ public class Practice08ObjectAnimatorView extends View {
 //        p.addRect(151, 150, 350, 300, Path.Direction.CW);
 //        p.addRect(250, 100, 300, 150, Path.Direction.CW);
 
-        canvas.scale(progress, progress, 225, 225);
+//        canvas.scale(progress, progress, 225, 225);
 
 //        canvas.drawPath(p, paint);
 

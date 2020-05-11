@@ -10,6 +10,7 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 public class Practice08ObjectAnimatorLayout extends RelativeLayout {
@@ -37,6 +38,8 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
         n = findViewById(R.id.numbers);
         animateBt = findViewById(R.id.animateBt);
 
+        final EditText inputNum = findViewById(R.id.et_input_number);
+
         animateBt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +56,8 @@ public class Practice08ObjectAnimatorLayout extends RelativeLayout {
                     a.setDuration(500);
                     a.start();
 
+                    String input = inputNum.getText().toString();
+                    n.mCount = input.equals("") ? 10 : Integer.parseInt(input);
                     ObjectAnimator numberAnimator = ObjectAnimator.ofInt(n, "moveUpY", 0, n.numHeight);
                     numberAnimator.setDuration(500);
                     n.calculateNum(1);
